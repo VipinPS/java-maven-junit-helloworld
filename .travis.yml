@@ -12,5 +12,5 @@ jobs:
       - docker tag travis-ci-build-stages-demo $DOCKER_USERNAME/travis-ci-build-stages-demo:$VERSION
       - docker push $DOCKER_USERNAME/travis-ci-build-stages-demo:$VERSION
     - stage: test
-      script: docker run --rm $DOCKER_USERNAME/travis-ci-build-stages-demo cat hello.txt
-    - script: docker run --rm $DOCKER_USERNAME/travis-ci-build-stages-demo cat hello.txt
+      script: docker run --rm $DOCKER_USERNAME/travis-ci-build-stages-demo:$VERSION cat hello.txt
+    - script: docker run --rm $DOCKER_USERNAME/travis-ci-build-stages-demo:$VERSION cat hello.txt
