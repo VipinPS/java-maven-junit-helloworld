@@ -1,3 +1,4 @@
+language: java
 env: 
   - version = $(git describe --abbrev=0 --tags)
 deploy:
