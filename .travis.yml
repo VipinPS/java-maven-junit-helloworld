@@ -1,6 +1,11 @@
+dist: xenial
 language: java
-env: 
-  - version = $(git describe --abbrev=0 --tags)
+jdk:
+- openjdk11
+before_install:
+- git fetch --all --tags
+- export version=`git describe --abbrev=0 --tags`
+- echo $version
 deploy:
   provider: script
   script: bash echo $version
