@@ -6,7 +6,8 @@ jobs:
       script:
       - git fetch --all --tags
       - export TAG=`git describe --tags --abbrev=0`
-      - export VERSION="$TRAVIS_BRANCH_$TAG"
+      - export BRANCH="$TRAVIS_BRANCH"
+      - export VERSION="${BRANCH}_${TAG}"
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
       - docker build -t travis-ci-build-stages-demo .
       - docker images
