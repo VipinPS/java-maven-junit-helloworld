@@ -1,14 +1,16 @@
-dist: xenial
-language: java
-jdk:
-- openjdk11
-before_install:
-- git fetch --all --tags
-- export version=`git describe --abbrev=0 --tags`
-- echo $version
-deploy:
-  provider: script
-  script: bash echo $version
-  on:
-    tags: true
-    all_branches: true 
+dist: trusty
+
+jobs:
+  include:
+    - stage: build docker image
+      script:
+      - git fetch --all --tags
+      - export VERSION=`git describe --tags --abbrev=0`
+      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      - docker build -t travis-ci-build-stages-demo .
+      - docker images
+      - docker tag travis-ci-build-stages-demo $DOCKER_USERNAME/travis-ci-build-stages-demo:$VERSION
+      - docker push $DOCKER_USERNAME/travis-ci-build-stages-demo:$VERSION
+    - stage: test
+      script: docker run --rm $DOCKER_USERNAME/travis-ci-build-stages-demo:$VERSION cat hello.txt
+    - script: docker run --rm $DOCKER_USERNAME/travis-ci-build-stages-demo:$VERSION cat hello.txt
