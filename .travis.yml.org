@@ -19,8 +19,9 @@ deploy:
   provider: script
   script: bash travis-scripts/deploy.sh 
   on:
-    all_branches: true
-    condition: $TRAVIS_BRANCH =~ ^(main|.*_stabilization)$
+    branch: 
+    - main
+    - '*stabilization'
 #env:
 #  global:
 #  - TAG=`git describe --tags --abbrev=0`
