@@ -3,7 +3,7 @@ language: shell
 branches:
   only:
   - main
-  - /^stabilization/
+  - */^stabilization/
 before_install:
 - git clone https://$GIT_TOKEN@github.com/VipinPS/travis-scripts.git
 - chmod +x travis-scripts/deploy.sh
