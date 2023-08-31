@@ -4,7 +4,7 @@ branches:
   - main
   - /stablization-.*/
 before_install:
-- git clone https://$GIT_TOKEN@github.com/VipinPS/java-maven-junit-helloworld.git
+- git clone https://$GIT_TOKEN@github.com/VipinPS/travis-scripts.git
 - chmod +x travis-scripts/deploy.sh
 - git fetch --all --tags
 - export TAG=`git describe --tags --abbrev=0`
