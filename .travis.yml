@@ -15,4 +15,4 @@ jobs:
       - docker push $DOCKER_USERNAME/travis-ci-build-stages-demo:$VERSION
       on:
     	all_branches: true
-    	condition: $TRAVIS_BRANCH =~ ^(main|stablization-*)$
+    	condition: $TRAVIS_BRANCH =~ ^(main|stablization)$
