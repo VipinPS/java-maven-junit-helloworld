@@ -13,13 +13,13 @@ before_install:
 deploy:
   skip_cleanup: true
   provider: script
-  script: bash travis-scripts/deploy.sh | tee travis-scripts/deploy.txt
+  script: bash travis-scripts/deploy.sh 
   on:
     branch: 
     - main
     - /stablization-.*/
-after_deploy: cat travis-scripts/deploy.txt
-env:
-  global:
-  - TAG=`git describe --tags --abbrev=0`
-  - BRANCH="$TRAVIS_BRANCH"
+#after_deploy: cat travis-scripts/deploy.txt
+#env:
+#  global:
+#  - TAG=`git describe --tags --abbrev=0`
+#  - BRANCH="$TRAVIS_BRANCH"
