@@ -1,5 +1,8 @@
 dist: trusty
-
+branches:
+  only:
+  - main
+  - /stablization-.*/
 jobs:
   include:
     - stage: build docker image
@@ -13,6 +16,3 @@ jobs:
       - docker images
       - docker tag travis-ci-build-stages-demo $DOCKER_USERNAME/travis-ci-build-stages-demo:$VERSION
       - docker push $DOCKER_USERNAME/travis-ci-build-stages-demo:$VERSION
-      on:
-    	all_branches: true
-    	condition: $TRAVIS_BRANCH =~ ^(main|stablization-*)$
