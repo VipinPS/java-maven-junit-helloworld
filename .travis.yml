@@ -1,18 +1,29 @@
 dist: trusty
+language: shell
 branches:
   only:
   - main
   - /stablization-.*/
-jobs:
-  include:
-    - stage: build docker image
-      script:
-      - git fetch --all --tags
-      - export TAG=`git describe --tags --abbrev=0`
-      - export BRANCH="$TRAVIS_BRANCH"
-      - export VERSION="${BRANCH}_${TAG}"
-      - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker build -t travis-ci-build-stages-demo .
-      - docker images
-      - docker tag travis-ci-build-stages-demo $DOCKER_USERNAME/travis-ci-build-stages-demo:$VERSION
-      - docker push $DOCKER_USERNAME/travis-ci-build-stages-demo:$VERSION
+before_install:
+- git clone https://$GIT_TOKEN@github.com/VipinPS/travis-scripts.git
+- chmod +x travis-scripts/deploy.sh
+- git fetch --all --tags
+- export TAG=`git describe --tags --abbrev=0`
+- export BRANCH="$TRAVIS_BRANCH"
+- export VERSION="${BRANCH}_${TAG}"
+- docker build -t travis-ci-build-stages-demo .
+- docker images
+- docker tag travis-ci-build-stages-demo $DOCKER_USERNAME/travis-ci-build-stages-demo:$VERSION
+deploy:
+  skip_cleanup: true
+  provider: script
+  script: bash travis-scripts/deploy.sh 
+  on:
+    branch: 
+    - main
+    - /stablization-.*/
+#env:
+#  global:
+#  - TAG=`git describe --tags --abbrev=0`
+#  - BRANCH="$TRAVIS_BRANCH"
+#  - VERSION="${BRANCH}_${TAG}"
