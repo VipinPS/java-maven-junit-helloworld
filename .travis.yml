@@ -18,8 +18,7 @@ deploy:
     branch: 
     - main
     - /stablization-.*/
-#after_deploy: cat travis-scripts/deploy.txt
-#env:
-#  global:
-#  - TAG=`git describe --tags --abbrev=0`
-#  - BRANCH="$TRAVIS_BRANCH"
+env:
+  global:
+  - TAG=`git describe --tags --abbrev=0`
+  - BRANCH="$TRAVIS_BRANCH"
