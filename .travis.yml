@@ -4,8 +4,7 @@ branches:
   - main
   - /stablization-.*/
 before_install:
-- git config core.sshCommand 'ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no'
-- git clone git@github.ibm.com:Everest/travis-scripts.git
+- GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git clone git@github.ibm.com:Everest/travis-scripts.git
 - chmod +x travis-scripts/deploy.sh
 - git fetch --all --tags
 - export TAG=`git describe --tags --abbrev=0`
