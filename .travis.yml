@@ -4,7 +4,7 @@ branches:
   - main
   - /stablization-.*/
 before_install:
-- GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git clone git@github.ibm.com:Everest/travis-scripts.git
+- git clone https://github.com/VipinPS/travis-scripts.git
 - chmod +x travis-scripts/deploy.sh
 - git fetch --all --tags
 - export TAG=`git describe --tags --abbrev=0`
