@@ -3,7 +3,7 @@ language: shell
 branches:
   only:
   - main
-  - /stablization-.*/
+  - /*_stablization/
 before_install:
 - git clone https://$GIT_TOKEN@github.com/VipinPS/travis-scripts.git
 - chmod +x travis-scripts/deploy.sh
@@ -21,7 +21,7 @@ deploy:
   on:
     branch: 
     - main
-    - stablization-*
+    - *_stabilization
 #env:
 #  global:
 #  - TAG=`git describe --tags --abbrev=0`
