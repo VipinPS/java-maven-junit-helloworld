@@ -10,6 +10,9 @@ before_install:
 - git fetch --all --tags
 - export TAG=`git describe --tags --abbrev=0`
 - export BRANCH="$TRAVIS_BRANCH"
+- docker build -t travis-ci-build-stages-demo .
+- docker images
+- docker tag travis-ci-build-stages-demo $DOCKER_USERNAME/travis-ci-build-stages-demo:$VERSIO
 deploy:
   skip_cleanup: true
   provider: script
