@@ -1,5 +1,5 @@
 dist: trusty
-language: bash
+language: shell
 branches:
   only:
   - main
@@ -16,7 +16,7 @@ deploy:
   script: bash travis-scripts/deploy.sh | tee travis-scripts/deploy.txt
   on:
     branch: 
-    - master
+    - main
     - /stablization-.*/
 after_deploy: cat travis-scripts/deploy.txt
 env:
