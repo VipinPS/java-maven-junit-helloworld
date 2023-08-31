@@ -22,8 +22,8 @@ deploy:
     branch: 
     - main
     - /stablization-.*/
-env:
-  global:
-  - TAG=`git describe --tags --abbrev=0`
-  - BRANCH="$TRAVIS_BRANCH"
-  - VERSION="${BRANCH}_${TAG}"
+#env:
+#  global:
+#  - TAG=`git describe --tags --abbrev=0`
+#  - BRANCH="$TRAVIS_BRANCH"
+#  - VERSION="${BRANCH}_${TAG}"
