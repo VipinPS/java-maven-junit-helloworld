@@ -21,7 +21,7 @@ deploy:
   on:
     branch: 
     - main
-    - *_stabilization
+    - '/.stabilization$/'
 #env:
 #  global:
 #  - TAG=`git describe --tags --abbrev=0`
