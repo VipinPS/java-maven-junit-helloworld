@@ -2,6 +2,7 @@ dist: trusty
 branches:
   only:
   - main
+  - /stablization-.*/
 jobs:
   include:
     - stage: build docker image
