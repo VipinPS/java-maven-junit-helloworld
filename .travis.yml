@@ -22,6 +22,7 @@ deploy:
     branch: 
     - main
     - *_stabilization
+    -  Test-Idletime-Testcases-561
 #env:
 #  global:
 #  - TAG=`git describe --tags --abbrev=0`
