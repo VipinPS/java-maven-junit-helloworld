@@ -20,7 +20,7 @@ deploy:
   script: bash travis-scripts/deploy.sh 
   on:
     all_branches: true
-    condition: $TRAVIS_BRANCH =~ ^(master|Test-Idletime-Testcases-561|.*_stabilization)$
+    condition: $TRAVIS_BRANCH =~ ^(main|.*_stabilization)$
 #env:
 #  global:
 #  - TAG=`git describe --tags --abbrev=0`
